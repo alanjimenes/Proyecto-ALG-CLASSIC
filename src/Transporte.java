@@ -54,4 +54,29 @@ public class Transporte {
             rutas.removeIf(ruta -> ruta.getDestino().getId().equals(id_Destination));
         }
     }
+    public void editRuta(String id_origin, String id_destination, double tiempo, double distancia, double costo, boolean trasbordo) {
+        if (listaAdyacencia.containsKey(id_origin)) {
+            List<Ruta> rutas = listaAdyacencia.get(id_origin);
+            boolean encontrada = false;
+            int i = 0;
+            while (i < rutas.size() && !encontrada) {
+                Ruta r = rutas.get(i);
+
+                if (r.getDestino().getId().equals(id_destination)) {
+                    r.setTiempoMinuto(tiempo);
+                    r.setDistanciaKm(distancia);
+                    r.setCosto(costo);
+                    r.setRequiereTrasbordo(trasbordo);
+                    encontrada = true;
+                }
+                i++;
+            }
+
+            if (!encontrada) {
+                System.err.println("Error: La ruta de " + id_origin + " a " + id_destination + " no existe.");
+            }
+        } else {
+            System.err.println("Error: El origen " + id_origin + " no existe en el sistema.");
+        }
+    }
 }

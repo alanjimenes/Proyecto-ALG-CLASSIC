@@ -19,7 +19,9 @@ public class Ruta {
     {
         return tiempoMinuto;
     }
-
+    public void setTiempoMinuto(double tiempoMinuto){
+        this.tiempoMinuto = tiempoMinuto;
+    }
     public double getDistanciaKm() {
         return distanciaKm;
     }
