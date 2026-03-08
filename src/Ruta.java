@@ -12,16 +12,23 @@ public class Ruta {
         this.costo = costo;
         this.requiereTrasbordo = requiereTrasbordo;
     }
-    public Parada getDestino(){
+
+    public Parada getDestino() {
         return destino;
     }
-    public double getTiempoMinuto()
-    {
+
+    public void setDestino(Parada destino) {
+        this.destino = destino;
+    }
+
+    public double getTiempoMinuto() {
         return tiempoMinuto;
     }
-    public void setTiempoMinuto(double tiempoMinuto){
+
+    public void setTiempoMinuto(double tiempoMinuto) {
         this.tiempoMinuto = tiempoMinuto;
     }
+
     public double getDistanciaKm() {
         return distanciaKm;
     }
@@ -45,5 +52,4 @@ public class Ruta {
     public void setRequiereTrasbordo(boolean requiereTrasbordo) {
         this.requiereTrasbordo = requiereTrasbordo;
     }
-
 }
