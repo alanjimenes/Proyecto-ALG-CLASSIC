@@ -97,4 +97,67 @@ public class Transporte {
             System.err.println("Error: La ruta de " + id_origin + " a " + id_destination + " no existe.");
         }
     }
+    public List<Parada> dijkstra(String id_Origin, String id_Destination, String criterio) {
+        if (!paradaMap.containsKey(id_Origin) || !paradaMap.containsKey(id_Destination)) {
+            System.err.println("Error: El origen o destino no existe.");
+            return null;
+        }
+
+        Map<String, Double> distancias = new HashMap<>();
+        Map<String, String> anteriores = new HashMap<>();
+
+        for (String id : paradaMap.keySet()) {
+            distancias.put(id, Double.MAX_VALUE);
+        }
+        distancias.put(id_Origin, 0.0);
+
+        List<String> noVisitados = new ArrayList<>(paradaMap.keySet());
+
+        while (!noVisitados.isEmpty()) {
+            String actual = null;
+            for (String id : noVisitados) {
+                if (actual == null || distancias.get(id) < distancias.get(actual)) {
+                    actual = id;
+                }
+            }
+
+            if (actual.equals(id_Destination)) break;
+            if (distancias.get(actual) == Double.MAX_VALUE) break;
+
+            noVisitados.remove(actual);
+
+            for (Ruta ruta : listaAdyacencia.get(actual)) {
+                String vecinoId = ruta.getDestino().getId();
+
+                double peso;
+                switch (criterio) {
+                    case "tiempo":    peso = ruta.getTiempoMinuto(); break;
+                    case "distancia": peso = ruta.getDistanciaKm();  break;
+                    default:          peso = ruta.getCosto();         break;
+                }
+
+                double nuevaDistancia = distancias.get(actual) + peso;
+
+                if (nuevaDistancia < distancias.get(vecinoId)) {
+                    distancias.put(vecinoId, nuevaDistancia);
+                    anteriores.put(vecinoId, actual);
+                }
+            }
+        }
+
+        List<Parada> camino = new ArrayList<>();
+        String paso = id_Destination;
+
+        while (paso != null) {
+            camino.add(0, paradaMap.get(paso));
+            paso = anteriores.get(paso);
+        }
+
+        if (camino.isEmpty() || !camino.get(0).getId().equals(id_Origin)) {
+            System.err.println("No existe camino entre " + id_Origin + " y " + id_Destination);
+            return null;
+        }
+
+        return camino;
+    }
 }
