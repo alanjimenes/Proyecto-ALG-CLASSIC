@@ -1,5 +1,8 @@
 import java.util.HashMap;
 import java.util.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Transporte {
     private Map<String, Parada> paradaMap;
@@ -97,6 +100,8 @@ public class Transporte {
             System.err.println("Error: La ruta de " + id_origin + " a " + id_destination + " no existe.");
         }
     }
+
+    
     public List<Parada> dijkstra(String id_Origin, String id_Destination, String criterio) {
         if (!paradaMap.containsKey(id_Origin) || !paradaMap.containsKey(id_Destination)) {
             System.err.println("Error: El origen o destino no existe.");

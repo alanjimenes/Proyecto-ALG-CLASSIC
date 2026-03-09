@@ -1,7 +1,7 @@
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Transporte t = new Transporte();
         t.cargarDatosPrueba();
 
@@ -23,6 +23,6 @@ public class Main {
         for (Parada p : rutaCosto) {
             System.out.print(p.getNombre() + " -> ");
         }
-    }
+    }*/
 }
 
