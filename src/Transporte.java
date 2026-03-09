@@ -169,14 +169,15 @@ public class Transporte {
         addParada("E", "Los Cerros");
         addParada("F", "Los Jardines");
 
-        addRuta("A", "B", 8,  2.5, 50,  false);
-        addRuta("A", "C", 15, 5.0, 75,  false);
-        addRuta("B", "C", 10, 3.5, 50,  false);
-        addRuta("B", "D", 12, 4.0, 60,  true);
-        addRuta("C", "D", 7,  2.0, 40,  false);
-        addRuta("C", "E", 20, 8.0, 100, false);
-        addRuta("D", "E", 15, 6.0, 80,  false);
-        addRuta("D", "F", 10, 3.0, 55,  false);
-        addRuta("E", "F", 12, 4.5, 70,  true);
+
+        addRuta("A", "B",  20,   2.5,   25,  false);
+        addRuta("A", "C",   8,   5.0,   20,  false);
+        addRuta("B", "C",  10,   3.5,   50,  false);
+        addRuta("B", "D",   5,   4.0,   90,  true);
+        addRuta("C", "D",   6,   2.0,   15,  false);
+        addRuta("C", "E",  20,   8.0,    8,  false);
+        addRuta("D", "E",  15,   6.0,   80,  false);
+        addRuta("D", "F",  25,   1.5,   90,  false);
+        addRuta("E", "F",   5,   4.5,    8,  true);
     }
 }
